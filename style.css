@@ -1,0 +1,125 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "poppins-italic-reg";
+  src: url("./assets/fonts/Poppins-Italic.ttf"), url("./assets/fonts/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: "poppins-reg";
+  src: url("./assets/fonts/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: "poppins-italic-extraBold";
+  src: url("./assets/fonts/Poppins-ExtraBoldItalic.ttf");
+}
+@font-face {
+  font-family: "poppins-bold";
+  src: url("./assets/fonts/Poppins-Bold.ttf");
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: poppins-reg;
+}
+body {
+  display: grid;
+  place-items: center;
+  background-color: hsl(0, 0%, 94%);
+}
+li {
+  list-style-type: none;
+}
+button {
+  width: fit-content;
+  height: fit-content;
+}
+
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: clamp(300px, 40svw, 600px);
+  background-color: #fff;
+  box-shadow: 0 0 80px 5px rgba(0, 0, 0, 0.1);
+  padding: 2em;
+}
+
+main > ul {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 75%;
+  gap: 1.5em;
+}
+
+main > div#buttonSection {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  & > hr {
+    height: fit-content;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  & > button {
+    border-radius: 50%;
+    border: 0px;
+    aspect-ratio: 1 / 1;
+    padding: 0.75em;
+    transition: background-color 0.2s ease-out;
+    background-color: hsl(259, 100%, 65%);
+    & > img {
+      width: 80%;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: hsl(0, 0%, 8%);
+    }
+  }
+}
+
+main > div#resultCase {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: poppins-italic-extraBold;
+  font-size: 4em;
+  & > p {
+    & > span {
+      color: hsl(259, 100%, 65%);
+      letter-spacing: 0.2ch;
+    }
+  }
+}
+
+input[type="text"] {
+  padding: 0.25em 0.75em;
+  font-family: poppins-bold;
+  font-size: 1.5em;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid hsl(0, 0%, 86%);
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    outline: 1px solid hsl(259, 100%, 65%);
+  }
+}
+
+label {
+  font-family: poppins-bold;
+  font-size: 0.8em;
+  color: hsl(0, 1%, 44%);
+  text-transform: uppercase;
+  line-height: 4ch;
+}
