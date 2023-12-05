@@ -9,31 +9,39 @@
   </head>
   <body>
     <main>
-      <ul>
+      <ul id="inputField">
         <li>
           <label for="day">Day</label>
-          <input type="text" name="day" id="" placeholder="DD" />
+          <input type="text" name="day" id="day" placeholder="DD" maxlength="2" />
+          <sub class="day">Must be a valid day</sub>
+          <sub class="empty">This filed is required</sub>
+          <sub class="valid">Must be a valid date</sub>
         </li>
         <li>
           <label for="month">Month</label>
-          <input type="text" name="month" id="" placeholder="MM" />
+          <input type="text" name="month" id="month" placeholder="MM" maxlength="2" />
+          <sub class="month">Must be a valid month</sub>
+          <sub class="empty">This filed is required</sub>
         </li>
         <li>
           <label for="year">Year</label>
-          <input type="text" name="year" id="" placeholder="YYYY" />
+          <input type="text" name="year" id="year" placeholder="YYYY" maxlength="4" />
+          <sub class="year">Must be in the past</sub>
+          <sub class="empty">This filed is required</sub>
         </li>
       </ul>
       <div id="buttonSection">
         <hr />
-        <button type="button">
+        <button id="submitBtn">
           <img src="./assets/images/icon-arrow.svg" alt="" />
         </button>
       </div>
       <div id="resultCase">
         <p><span id="yearResult">--</span>years</p>
-        <p><span id="yearResult">--</span>months</p>
-        <p><span id="yearResult">--</span>days</p>
+        <p><span id="monthResult">--</span>months</p>
+        <p><span id="dayResult">--</span>days</p>
       </div>
     </main>
+    <script src="main.js"></script>
   </body>
 </html>

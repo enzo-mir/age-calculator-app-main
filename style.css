@@ -32,6 +32,7 @@ body {
 body {
   display: grid;
   place-items: center;
+  align-content: center;
   background-color: hsl(0, 0%, 94%);
 }
 li {
@@ -50,13 +51,68 @@ main {
   background-color: #fff;
   box-shadow: 0 0 80px 5px rgba(0, 0, 0, 0.1);
   padding: 2em;
+  border-bottom-right-radius: 30%;
+/* 
+  @media screen and () {
+    
+  } */
 }
 
 main > ul {
   display: grid;
   grid-template-columns: repeat(3, auto);
   width: 75%;
+  min-width: 360px;
   gap: 1.5em;
+  & > li > sub.empty,
+  & > li > sub.day,
+  & > li > sub.year,
+  & > li > sub.month,
+  & > li > sub.valid {
+    color: hsl(0, 100%, 67%);
+    display: none;
+    width: 100%;
+    font-size: 0.7em;
+    padding-top: 1em;
+  }
+
+  &.dayError {
+    & > li > sub.day {
+      display: block;
+    }
+  }
+  &.monthError {
+    & > li > sub.month {
+      display: block;
+    }
+  }
+  &.yearError {
+    & > li > sub.year {
+      display: block;
+    }
+  }
+
+  &.dayEmpty {
+    & > li:first-child > sub.empty {
+      display: block;
+    }
+  }
+  &.monthEmpty {
+    & > li:nth-child(2) > sub.empty {
+      display: block;
+    }
+  }
+  &.yearEmpty {
+    & > li:last-child > sub.empty {
+      display: block;
+    }
+  }
+
+  &.invalidDate {
+    & > li > sub.valid {
+      display: block;
+    }
+  }
 }
 
 main > div#buttonSection {
@@ -67,7 +123,7 @@ main > div#buttonSection {
     height: fit-content;
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
-  & > button {
+  & > button#submitBtn {
     border-radius: 50%;
     border: 0px;
     aspect-ratio: 1 / 1;
