@@ -19,9 +19,6 @@ function submitAge() {
   const monthValue = month.value;
   const yearValue = year.value;
 
-  day.value = String(dayValue).padStart(2, 0);
-  month.value = String(monthValue).padStart(2, 0);
-
   const inputField = document.getElementById("inputField");
   const validate = getErrorsOfInputs(dayValue, monthValue, yearValue).isEmpty().length
     ? getErrorsOfInputs(dayValue, monthValue, yearValue)
@@ -37,6 +34,8 @@ function submitAge() {
         .map((error) => inputField.classList.toggle(error))
     : getErrorsOfInputs(dayValue, monthValue, yearValue).isValidDate();
   if (!validate.length) {
+    day.value = String(dayValue).padStart(2, 0);
+    month.value = String(monthValue).padStart(2, 0);
     const starterDate = new Date();
     starterDate.setHours(0);
     starterDate.setMinutes(0);
