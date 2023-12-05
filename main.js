@@ -91,7 +91,8 @@ function getErrorsOfInputs(day, month, year) {
   }
 
   function isValidDate() {
-    if (new Date(`"${month}/${day}/${year}"`) == "Invalid Date") {
+    const confirmationDate = new Date(`"${month}/${day}/${year}"`);
+    if (confirmationDate == "Invalid Date" || confirmationDate.getTime() > new Date().getTime()) {
       tableOfErrors.push("invalidDate");
       return tableOfErrors;
     } else {
