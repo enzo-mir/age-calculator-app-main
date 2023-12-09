@@ -91,12 +91,16 @@ function getErrorsOfInputs(day, month, year) {
   }
 
   function isValidDate() {
-    const confirmationDate = new Date(`"${month}/${day}/${year}"`);
+    const date = new Date();
+    date.setMonth(month - 1);
+    date.setDate(day);
+    date.setFullYear(year);
+    const confirmationDate = new Date(date);
     if (confirmationDate == "Invalid Date" || confirmationDate.getTime() > new Date().getTime()) {
       tableOfErrors.push("invalidDate");
       return tableOfErrors;
     } else {
-      return new Date(`"${month}/${day}/${year}"`);
+      return date;
     }
   }
 

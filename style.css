@@ -37,6 +37,8 @@ body {
 }
 li {
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
 }
 button {
   width: fit-content;
@@ -48,12 +50,13 @@ main {
   display: flex;
   flex-direction: column;
   width: clamp(300px, 40svw, 600px);
+  gap: 1em;
   background-color: #fff;
   box-shadow: 0 0 80px 5px rgba(0, 0, 0, 0.1);
   padding: 2em;
   border-radius: 1em;
   border-bottom-right-radius: 30%;
-  min-width: 430px;
+  min-width: 350px;
 
   @media screen and (max-width: 1200px) {
     gap: 2em;
@@ -63,14 +66,15 @@ main {
 main > ul {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  width: 75%;
-  min-width: 360px;
-  gap: 1.5em;
+  width: 100%;
+  min-width: 100%;
+  justify-content: space-between;
   & > li > sub.empty,
   & > li > sub.day,
   & > li > sub.year,
   & > li > sub.month,
   & > li > sub.valid {
+    flex-direction: column;
     color: hsl(0, 100%, 67%);
     display: none;
     width: 100%;
@@ -129,11 +133,11 @@ main > div#buttonSection {
     border-radius: 50%;
     border: 0px;
     aspect-ratio: 1 / 1;
-    padding: 0.75em;
+    padding: clamp(0.5em, 1.5vw, 1em);
     transition: background-color 0.2s ease-out;
     background-color: hsl(259, 100%, 65%);
     & > img {
-      width: 80%;
+      width: clamp(60%, 100%, 80%);
     }
     &:hover {
       cursor: pointer;
@@ -149,7 +153,7 @@ main > div#resultCase {
   width: 100%;
   height: 100%;
   font-family: poppins-italic-extraBold;
-  font-size: 4em;
+  font-size: clamp(2em, 4vw, 4em);
   & > p {
     & > span {
       color: hsl(259, 100%, 65%);
@@ -161,8 +165,8 @@ main > div#resultCase {
 input[type="text"] {
   padding: 0.25em 0.75em;
   font-family: poppins-bold;
-  font-size: 1.5em;
-  width: 100%;
+  font-size: clamp(1em, 2vw, 1.5em);
+  width: 80%;
   border-radius: 5px;
   border: 1px solid hsl(0, 0%, 86%);
 
