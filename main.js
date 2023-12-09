@@ -47,23 +47,27 @@ function submitAge() {
       months: 0,
       days: 0,
     };
+    const yearNow = new Date().getFullYear();
+    const monthNow = new Date().getMonth() + 1;
+    const dayNow = new Date().getDate();
 
-    validDate.setFullYear(validDate.getFullYear() + 1);
-    while (validDate < starterDate) {
-      dateIntervale.years += 1;
-      validDate.setFullYear(validDate.getFullYear() + 1);
+    dateIntervale.years = yearNow - validDate.getFullYear();
+
+    if (validDate.getMonth() <= monthNow) {
+      dateIntervale.months = monthNow - validDate.getMonth();
+    } else {
+      dateIntervale.years--;
+      dateIntervale.months = 12 - (monthNow - validDate.getMonth());
     }
-    validDate.setFullYear(validDate.getFullYear() - 1);
-    validDate.setMonth(validDate.getMonth() + 1);
-    while (validDate < starterDate) {
-      dateIntervale.months += 1;
-      validDate.setMonth(validDate.getMonth() + 1);
-    }
-    validDate.setMonth(validDate.getMonth() - 1);
-    validDate.setDate(validDate.getDate() + 1);
-    while (validDate < starterDate) {
-      dateIntervale.days += 1;
-      validDate.setDate(validDate.getDate() + 1);
+
+    if (validDate.getDate() <= dayNow) {
+      dateIntervale.days = dayNow - validDate.getDate();
+    } else {
+      dateIntervale.months--;
+      let days = 31;
+      if ([1, 5, 7, 10, 12].includes(monthNow)) days = 30;
+      if (monthNow == 3) days = 28;
+      dateIntervale.days = days - (dayNow - validDate.getDate());
     }
 
     resultDay.textContent = dateIntervale.days;
@@ -92,7 +96,7 @@ function getErrorsOfInputs(day, month, year) {
 
   function isValidDate() {
     const date = new Date();
-    date.setMonth(month - 1);
+    date.setMonth(month);
     date.setDate(day);
     date.setFullYear(year);
     const confirmationDate = new Date(date);
